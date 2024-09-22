@@ -1,12 +1,14 @@
-import java.util.ArrayList;
-import java.util.List;
+import net.sf.saxon.functions.ConstantFunction;
+
+import java.util.*;
 
 public class JavaExercises {
 
     /** Returns an array [1, 2, 3, 4, 5, 6] */
     public static int[] makeDice() {
         // TODO: Fill in this function.
-        return null;
+        int[] diceArr = {1, 2, 3, 4, 5, 6};
+        return diceArr;
     }
 
     /** Returns the order depending on the customer.
@@ -15,14 +17,36 @@ public class JavaExercises {
      *  In any other case, return an empty String[] of size 3. */
     public static String[] takeOrder(String customer) {
         // TODO: Fill in this function.
-        return null;
+        if (customer.equals("Ergun")) {
+            String[] order = {"beyti", "pizza", "hamburger", "tea"};
+            return order;
+        }
+        else if (customer.equals("Erik")) {
+            String[] order = {"sushi", "pasta", "avocado", "coffee"};
+            return order;
+        }
+        else {
+            String[] emptyOrder = new String[3];
+            return emptyOrder;
+        }
     }
 
     /** Returns the positive difference between the maximum element and minimum element of the given array.
      *  Assumes array is nonempty. */
     public static int findMinMax(int[] array) {
         // TODO: Fill in this function.
-        return 0;
+        int arrLen = array.length;
+        int minNum = array[0];
+        int maxNum = array[0];
+        for (int num: array) {
+            if (num > maxNum) {
+                maxNum = num;
+            }
+            if (num < minNum) {
+                minNum = num;
+            }
+        }
+        return (maxNum - minNum);
     }
 
     /**
@@ -39,7 +63,18 @@ public class JavaExercises {
 
     private static List<Integer> hailstoneHelper(int x, List<Integer> list) {
         // TODO: Fill in this function.
-        return null;
-    }
+        if (x == 1) {
+            list.add(x);
+            return list;
+        }
 
+        list.add(x);
+        if (x % 2 == 0) {
+            x /= 2;
+        }
+        else {
+            x = 3 * x + 1;
+        }
+        return hailstoneHelper(x, list);
+    }
 }
